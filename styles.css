@@ -1,0 +1,122 @@
+button	{
+	display:block;
+	background-color:white;
+	border:1px solid;
+	font-family:Arial,Helvetica,sans-serif;
+	}
+	
+button:hover	{
+	background-color:#0066FF;
+}
+
+body	{
+	background-color: white;
+	color:black;
+}
+
+div
+{
+border:2px solid #a1a1a1;
+padding:10px 40px; 
+background-image:url("gradient.jpg");
+background-repeat:repeat-x;
+width:200px;
+border-radius:25px;
+}
+
+div ul{
+	display:inline;
+	}
+
+img	{
+	float:right;
+	position:relative;
+}
+
+hr.flare {
+    height: 50px;
+    border-style: ridge;
+    border-color: #900;
+    border-width: 2px 0 0 0;
+    border-radius: 45px;
+}
+hr.flare:before {
+    display: block;
+    content: "";
+    height: 50px;
+    margin-top: -51px;
+    border-style: ridge;
+    border-color: #900;
+    border-width: 0 0 2px 0;
+    border-radius: 45px;
+}
+
+nav {
+		height:60px;
+		background:white;
+		color:black;
+	}
+		
+nav ul{
+		font-size:20px;
+		padding:0;
+	}
+
+	nav ul li{
+			display:block;
+			position:relative;
+			float:left;
+		}
+		
+	nav li ul {
+			display:none;
+		}
+	
+	nav ul li a{
+			display:block;
+			text-decoration:none;
+			padding:5px 15px 5px 15px;
+			/*background:#66FFFF;*/
+			color:black;
+			white-space:nowrap;
+			height:30px;
+			width:100px;
+			text-align:center;
+		}
+	
+	nav ul li a:hover{
+			background:#0099FF;
+			color:black;
+		}
+		
+	nav li:hover ul{
+			display:block;
+			position:absolute;
+			height:25px;
+		}
+		
+	nav li:hover li{
+			float:none;
+			font-size:11px;
+		}
+		
+	nav li:hover a{
+			background:#66FFFF;
+			height:30px;
+		}
+		
+	nav li:hover li a:hover {
+			background:#CCFFFF;
+		}
+		
+	nav ul li ul li a{
+			text-align:center;
+		}
+
+#topBar{
+	float:right;
+}
+
+#shopBar{
+	float:left;
+}

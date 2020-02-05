@@ -1,0 +1,1 @@
+drop table Notifications, Ratings, Exchanges, Messages, CO, SEL, Midshipmen, Items, Company, Member;
