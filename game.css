@@ -1,0 +1,88 @@
+body {
+	background-image: url("bg.png");
+	background-repeat:no-repeat;
+    background-position:0px 100px;
+	background-size:100% 50%;
+}
+div.bad{ 
+   width:128px; 
+   height:128px;
+   position: relative;
+}
+iv.good{ 
+   width:154px; 
+   height:144px;
+   position: relative;
+}
+div#badGuys{
+    background-image: url("joker.gif");
+	background-repeat:no-repeat;
+	
+}div#badGuys1{
+    background-image: url("ghosts.gif");
+	background-repeat:no-repeat;
+	
+}div#badGuys2{
+    background-image: url("devil.gif");
+	background-repeat:no-repeat;
+	
+}
+div#goodGuys{
+    background-image: url("goodboy.gif");
+	background-repeat:no-repeat;
+}
+div.missile  {
+   width:90px; 
+   height:15px; 
+   background-image: url("bomb.gif"); 
+   background-repeat:no-repeat; 
+   z-index: 9
+}
+
+div#outter{
+     width: 900px ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+div#scorebox{
+    float:left;
+	text-align:center;
+	background-color: limeGreen;
+	margin: 0 auto;
+	width: 300px;
+}
+div#killcount{
+    float:left;
+	text-align:center;
+	color: white;
+	background-color: Red;
+	width: 300px;
+	margin: 0 auto;
+}
+div#time{
+    float:left;
+	text-align:center;
+	background-color:Yellow;
+	margin: 0 auto;
+	width: 300px;
+}
+div#road{
+   cursor: url("cursor.cur"), crosshair;
+}
+div#launcher{
+   background-image: url("batman.gif");
+   background-repeat:no-repeat;
+   z-index: 9;
+}
+
+div#road{
+   margin-top:100px;
+   width:100%; 
+   height:550px; 
+   background-image: url("road.png"); 
+   background-repeat: horizontal;
+   z-index:0;
+}
+h1{
+   text-align:center;
+}

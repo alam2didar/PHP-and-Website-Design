@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+	  <meta charset = "utf-8" />
+      <title>Using Cookies in Java Script</title>
+
+      <script type = "text/javascript">
+         <!--
+         // Return the 'value' of the cookie variable with name 'desiredName'
+         // returns null if no match found.
+         function readCookie(desiredName) {
+             var cookie = document.cookie;
+
+             // First split the pairs apart on '; '
+             var pairs  = cookie.split("; ");
+
+             // Now split each pair on '='.  Check if have a match
+             for (var i=0; i < pairs.length; i++) {
+                var aPair = pairs[i];
+                var cookieTokens = aPair.split("=");
+                var name  = cookieTokens[0]; 
+                var value = cookieTokens[1];
+                if (name == desiredName) {
+                    // found desired variable -- return value
+                    return unescape(value);
+                }
+             }
+
+             return null;   // no match;
+         }
+
+        // Create cookie for variable 'name' with value 'value'
+        // If 'days' is set, sets to expire 'days' days from now.
+        function createCookie(name,value,days) { 
+          if (days) { 
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            var expires = "; expires="+date.toGMTString(); 
+          } 
+          else 
+             var expires = ""; 
+		
+		  document.cookie = name+"="+escape(value)+expires; 
+        } 
+
+        // Erase any cookie set for variable 'name'        
+        function eraseCookie(name) {
+        	createCookie(name,"",-1);
+        }
+
+         
+		//My CODE HERE
+	//try to read cookie
+	var userName = readCookie('Name');
+	var favColor;
+		//if cookie exists
+	if(userName!=null && userName != ""){
+		document.writeln("I know you!! You gave me Cookies last time!!!<br />");
+		document.writeln("<h1>Your User Name: "+userName+"</h1>");
+		favColor = readCookie('Color');
+        document.writeln("<h1>Your Favourite Color: "+favColor+"</h1>");
+	}
+	//no cookies
+	else{
+		document.writeln("No Cookies");
+        do{  //ask for cookie
+			userName = window.prompt("User Name:");
+			favColor = window.prompt("Your Favorite Color:");
+	    } while(!userName || !favColor); //untill we get a input from user
+	    //create cookie
+	    createCookie('Name', userName, 1);
+		createCookie('Color', favColor, 1);
+		execute(favColor);//call excute
+		
+	
+	}
+		
+	function execute(color) { //after new cookie is set take action and executes users favorite
+		document.writeln("<br /><h3>New Cookies have been stored!! </h3>");
+		document.writeln("<h1>Your User Name: "+userName+"</h1>");
+        document.writeln("<h1>Your Favourite Color: "+readCookie('Color')+"</h1>");
+	}
+		
+	function color() { //onload of the body changes the background color to users wish
+		var s= document.getElementById("bd");
+		s.style.backgroundColor=favColor; //set the color
+	}
+		
+	function change() { //cahnges user's informatins on wish
+		eraseCookie('Name');
+		eraseCookie('Color');
+		location.reload();
+	}
+      </script>
+   </head>
+
+   <body id = "bd" onload="color()" style = "background-color:white;">
+      <h3><em>Alam's page with cookies</em></h1>
+	  <br>Do you want to change your credentials? <br />
+	 
+	  <button onclick = "change()"> Then Reset </button>
+	  
+	  
+	  <!-- ***************************************************************
+		   Below this point is text you should include on every IT350 page
+		   *************************************************************** -->
+
+		<!-- Below is a script to output the time at which this page was last modified.
+		   Later in the course we will learn how this works.  -->
+		<!-- This makes a button you can click on to validate your page - also include this on every page -->
+		<p><br/><br/> </p>
+		
+		<p>
+			<script type = "text/javascript">
+			 document.write('<a href="http://zee.cs.usna.edu:8888/?doc='+document.location+'">' +
+			'<img src="http://www.w3.org/html/logo/img/mark-word-icon.png"'+
+					'alt="Valid HTML 5!" height="50" width="50" />'+
+		  '</a>');
+		</script>
+			This page last modified
+			<script type="text/javascript">
+		  document.write(document.lastModified);
+		</script>
+	</p>
+
+	  
+   </body>
+</html>

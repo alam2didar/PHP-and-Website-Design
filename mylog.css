@@ -1,0 +1,175 @@
+body {
+	background-color: #FFFFFF;
+	
+}
+h1 {
+   color: Blue;
+   text-align: center;
+   font-family: lucida console;
+   font-size: 2.6em;
+}
+h2 { 
+   text-align: center;
+   color: black;
+}
+h4 {
+  color: black;
+  text-align: center;
+  font-size: 1.2em;
+}
+p {
+  text-align: center;
+  font-size: 1.1em;
+  font-family: lucida console;
+  font-style: oblique;
+}
+p.welcome{
+  color: blue;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: verdana;
+  font-style: none;
+  text-decoration: underline;  
+}
+p.errorCheck {
+  display:none;
+  color: red;
+  text-align: left;
+}
+span {
+    color: blue;
+	font-family: lucida console;
+	font-size: 1.5em;
+}
+div.login{
+margin-left: auto; 
+margin-right: auto;
+border:2px solid #a1a1a1;
+padding:10px 40px; 
+background-image:url("gradient.jpg");
+background-repeat:repeat-x;
+width: 250px;
+height:auto;
+border-radius: 25px;
+}
+div.add{
+display:none;
+border:2px solid salmon;
+padding:10px 40px;
+background-color: lime;
+width: 260px;
+}
+
+div.mlb{
+display:block;
+border:2px solid salmon;
+padding:10px 40px;
+background-color: lime;
+width: 260px;
+
+
+}
+
+div.logo{
+   margin-left: auto; 
+   margin-right: auto; 
+   text-align: center;
+}
+div.one {
+   display: block; 
+   margin-left: auto; 
+   margin-right: auto; 
+   text-align: center;
+}
+
+div.two {
+    float:left;
+    width: 300px;
+    border: 5px solid #FF987E;
+    margin-left: 10px;
+	padding: 5px;
+	word-wrap: break-word;
+	
+}div.twoFour {
+    display: none; 
+    width: 350px;
+    border: 1px solid #ffffff;
+	float:left;
+	
+}
+div.four{
+    text-align:left;
+	float:left;
+	width: 300px;
+	margin-left: 10px;
+	margin-top: 5px;
+	border: 5px groove LightSlateGray;
+	padding: 5px;
+}
+div.search{
+    display: none; 
+    text-align:left;
+	float:right;
+	border: 5px groove LightSlateGray;
+	padding: 15px;
+}
+button{   
+border: 1px solid #878691;
+}
+button:active{
+ border-color: lightBlue; 
+}
+
+ul.circle {
+    list-style-type: circle;
+}
+li {
+  margin: 5px;
+  font-size: 1.2em;
+
+}
+li:hover {
+  font-size: 123%; 
+}
+li.addAc {
+  background-color: lime;
+  text-decoration: underline;
+  }
+li.delete {
+  background-color: salmon;
+  text-decoration: underline;
+}
+li.move {
+  background-color: yellow;
+  text-decoration: underline;
+}
+li.edit {
+  background-color: aqua;
+  text-decoration: underline;
+}
+li.todo {
+  background-color: DarkTurquoise;
+  text-decoration: underline;
+}
+li.imp {
+  background-color: DarkOrange;
+  text-decoration: underline;
+}
+li.recent {
+  background-color: LightBlue; 
+}
+
+table.d{
+    
+    border: 1px solid black;
+	margin-left:520px;
+}
+table.ms{
+    
+    border: 1px solid black;
+	margin-left:auto;
+}
+th, td { 
+    border: 1px solid black;
+	margin-left:500px;  
+}

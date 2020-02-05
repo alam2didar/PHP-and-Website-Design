@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head> <title>XSLT Example with Web services</title>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script type="text/javascript" src="transform2.js"> </script>
+    </head>
+    <body>
+        <p>Web 2.0 is great!</p>
+		<h3>Authentication</h3>
+    <form> 
+     <label>Enter your User Name: <input type="text" id="user"/></label><br><br>
+     <label>Enter your password: <input type="password" id="pwd"/></label><br>
+    </form>
+	<p>Tags to search for: <input type="text" id="tags" /> 
+            <input type="button" value="Get photos!" onclick="getPhotos()" />
+	</p>
+
+	<h2>Below will be some content from elsewhere:</h2>
+
+        <div id="planet"> <h1>This is some boring content.</h1> </div>
+
+      <p>
+      <a href="http://www.usna.edu/CS/w3c-validator/check?uri=referer">
+        <img src="http://www.w3.org/Icons/valid-xhtml11"
+             alt="Valid XHTML 1.1!" height="31" width="88" />
+      </a>
+      </p>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+	<!-- Form -->
+	<!--Midn alam-->
+	
+	<html>
+	 <head>
+	 <meta charset="utf-8" />
+	 <title>Feedback Form</title>
+	 <link rel="stylesheet" type="text/css" href="style.css">
+	 <style type="text/css">
+	 body
+	 {
+	 background-color:#EDE6E6;
+	 }
+	 </style>
+	</head>
+	<body>
+	<h1>Feedback Form</h1>
+	<h3>**Please do not hesitate to put up any suggestions you may have. <br>We take your opinions <b>seriously!</b><br><span style="color:red">*</span>Required Fileds</h3>
+	<p>
+	 <form method ="post" action = "submit.pl">
+	 <p>
+	 <!-- Hidden inputs -->
+	 <!-- information -->
+     <input type ="hidden" name = "recipient"
+        value = "m150084@usna.edu" />	
+	 <input type ="hidden" name = "subject"
+        value = "Feedback Form" />
+	 <input type ="hidden" name = "redirect"
+        value = "http://intranet.usna.edu" />	
+	</p>
+		<!-- Insert a box -->
+		<p><label><span style="color:red">*</span>Name:<input name = "name" type ="text" size = "25" maxlength = "30" /> </label></p>
+		 <label>Please Create Your Own Password (optional): 8-10 Characters</label><br>
+		 <!-- using password input -->
+		<label><span style="color:red">*</span>Password:</label><input type ="password" name="Password" size = "10" maxlength = "10" /> <br><br>
+		<label><span style="color:red">*</span>Your Division-ID:</label><input type ="text" name="id" size = "10" maxlength = "10" />*Must be a number<br />
+		<!-- using radio button -->
+		<br /><label> <span style="color:red">*</span>Gender:</label><br> <input type="radio" name="sex" value="male">Male<br />
+						            <input type="radio" name="sex" value="female">Female<br /><br />
+									<!-- more radio button -->
+		<label>How often you vist the ship's website per week? </label>	<br><input type="radio" name="visit" value="Everyday">Everyday<br>
+						                                            <input type="radio" name="visit" value="Almost everyday">Almost everyday<br>
+																	<input type="radio" name="visit" value="Few times">Few times<br>
+																	<input type="radio" name="visit" value="Very few times">Very Few times<br>					
+																	<input type="radio" name="visit" value="Never">Never<br>					
+																	<input type="radio" name="visit" value="On Leave">Only when on leave <br><br>
+																	
+		
+		<!-- Using check box -->
+		<label><span style="color:red">*</span>Primary reasons for visiting the website: </label> <br> <input type="checkbox" name="Reasons" value="Daily routine"> to check out daily routine 
+		                                                                <input type="checkbox" name="Reasons" value="Events"> to find out Special events 
+		                                                                <input type="checkbox" name="Reasons" value="News"> News
+		                                                                <input type="checkbox" name="Reasons" value="Update"> to be updated about ship's info
+		                                                                <input type="checkbox" name="Reasons" value="Like"> I just Like it<br><br>
+																		
+																		<!-- expandable radio buttons -->
+		<label> How do you like the site? </label><br>  <select name="Likes">
+														<option value="Excellent">Excellent</option>
+														<option value="10">10</option>
+														<option value="9">9</option>
+														<option value="8">8</option>
+														<option value="7">7</option>
+														<option value="6">6</option>
+														<option value="5">5</option>
+														<option value="4">4</option>
+														<option value="3">3</option>
+														<option value="2">2</option>
+														<option value="poor">Poor</option>
+														<option value="don't know">No comments</option>
+														</select>
+														<br>
+														<br>
+													<!-- textarea -->
+		<label>Your Suggestions and Ideas: </label><br> <textarea name = "idea" rows="10" cols="50">Enter comments here.</textarea><br><br>
+		
+		
+		
+		
+		<!-- Submit form OR Clear the content -->
+		<p><input  type ="submit" value = "Submit" />
+		<input  type ="reset" value = "Reset" /></p>
+	   </form>
+		
+	
+	
+		<!-- ***************************************************************
+			   Below this point is text you should include on every IT350 page
+			   *************************************************************** -->
+
+			<!-- Below is a script to output the time at which this page was last modified.
+			   Later in the course we will learn how this works.  -->
+			<!-- This makes a button you can click on to validate your page - also include this on every page -->
+			<p><br/><br/> </p>
+			<hr/>
+			<p>
+				<script type = "text/javascript">
+				 document.write('<a href="http://zee.cs.usna.edu:8888/?doc='+document.location+'">' +
+				'<img src="http://www.w3.org/html/logo/img/mark-word-icon.png"'+
+						'alt="Valid HTML 5!" height="50" width="50" />'+
+			  '</a>');
+			</script>
+				This page last modified
+				<script type="text/javascript">
+			  document.write(document.lastModified);
+			</script>
+		</p>
+	
+	</body>
+	</html>

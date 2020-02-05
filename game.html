@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<!-- A bare bones web page to start assignments with --> 
+<!-- Lab 05 -->
+<!-- Alam -->
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Gotham City</title>
+<link rel="stylesheet" type="text/css" href="game.css">
+  <style type="text/css">
+    /* Margin and padding on body element can introduce errors in determining
+       element position and are not recommended; we turn them off. */
+    body { margin:0; padding:0 }
+    /* size gets overridden later */
+    
+    .invisible {width:10px; height:10px;background-color:white; z-index: 0}
+    
+  </style>
+
+  <!-- Load JQuery -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <!-- Animation Code -->
+  <script type="text/javascript">
+  
+    // time keeping
+	//using setInterval
+	//for this game time is essentially the final score
+      var start = new Date;
+	  var hours;
+	  var minutes;
+	  var seconds;
+	  
+     var idTime = setInterval(function() {
+	            var total_seconds = (new Date - start) / 1000; // "Seconds"
+			    
+	           hours = Math.floor(total_seconds / 3600); //"Hours"
+               total_seconds = total_seconds % 3600;
+
+               minutes = Math.floor(total_seconds / 60); //"Minutes"
+               total_seconds = total_seconds % 60;
+
+			   
+               seconds = Math.floor(total_seconds); // left "Seconds"
+               
+			   $('#time').text( "Time: " + hours +"h : " + minutes + "m : " + seconds +"s");
+                }, 1000);
+ //stops the timer
+      function stopTimer(){
+	        clearInterval(idTime);
+	  }    
+	  
+        // This function is periodicaly called by the timer.  It makes things move.
+        function mainLoop() {	
+		     //check the game status
+		    if(score < 0){
+			  if(confirm("You seem to have failed to save the city! Want to replay?")){ 
+			    score = 5;
+				confirm ("Your best Time: " + hours +"h : " + minutes + "m : " + seconds +"s");			    
+				window.location = "http://intranet.cs.usna.edu/~m150084/it452/Lab05/game.html";
+			  }
+			   else { window.location = "http://intranet.cs.usna.edu/~m150084/it452/default.htm";
+			   }
+			}
+		 
+		    
+            run('badGuys', badGuysPos, badGuysSize, badGuysVeloc);
+            run('badGuys1', badGuys1Pos , badGuysSize, badGuysVeloc);
+            run('badGuys2', badGuys2Pos, badGuysSize, badGuysVeloc);
+			
+			if(goodGuysVeloc != null){
+            run('goodGuys', goodGuysPos, goodGuysSize, goodGuysVeloc);
+            run('goodGuys1', goodGuysPos, goodGuysSize, goodGuysVeloc);
+			checkCollsion(badGuysPos, badGuysSize, goodGuysPos, goodGuysSize);
+			checkCollsion(badGuys1Pos, badGuysSize, goodGuysPos, goodGuysSize);
+			checkCollsion(badGuys2Pos, badGuysSize, goodGuysPos, goodGuysSize);
+			}
+			
+			if (missileVeloc != null) {
+            run('missile1', missilePos, missileSize, missileVeloc); 
+			
+
+		 // check for missile collission
+		 checkMissileHit('missile1', missilePos, missileSize, launcherPos, launcherSize);
+		
+		
+		}
+	    
+    }
+      
+        // constants
+		var HIT_LEFT    = 10;
+        var HIT_RIGHT   = 11;
+
+	var score = 1;
+	var count = 0;
+
+        
+        // (x,y) coordinates of the block
+        var badGuysPos   = [0,500];  
+        var badGuys1Pos   = [220,200];  
+        var badGuys2Pos   = [500,500];  
+        var badGuysSize  = [128,128]
+        var badGuysVeloc = [Math.floor((Math.random() * 3) + 1), 0];
+
+	// the second block	
+        var goodGuysPos   = [1200,500];  
+        var goodGuysSize  = [128, 128];
+        var goodGuysVeloc = [Math.floor((Math.random() * 1) + 1), 0];
+        
+	// the game board
+        var roadPos  = [100,100];
+        var roadSize = [1300,500];
+       
+        
+	// missile launcher
+        var launcherPos  = [ 600, 650];
+        var launcherSize = [ 140, 140];
+
+	// a missile.  Put off board initially
+	var offBoardPos  = [1000, 1000];
+        var missilePos = offBoardPos;
+        var missileSize  = [100,34];
+		
+        var missileVeloc = null;
+
+        // Move the block by a little bit
+        function run(name, pos, size ,veloc) {
+	  // Set the block's current position.
+          pos[0] = pos[0] + veloc[0];
+          pos[1] = pos[1] + veloc[1];
+	  // Move the block to its new position.
+	  $("#"+name).offset({ left: pos[0], top: pos[1] });
+
+          keepItemInsideBox(name,roadPos, roadSize, pos, size, veloc);
+        }
+    
+	//fire in regular interval
+    var  fire = setInterval (function () {
+	             var offset = $('#badGuys').offset();
+				 firingpos = [0, 0];
+	             firingpos[0] = offset.left;
+	             firingpos[1] = offset.top;
+				 fireAtClick(firingpos);}, 5000);
+				 
+
+    //launcher is hit 
+	//adjust score and position
+	function gotShotAt(){ 
+	if($(this).attr("class") == "bad"){
+	 id = $(this).attr("id");
+	$(this).html('<span style = "color:yellow"><b>I am coming for you! HA HA!!<b></span>');
+    $(this).fadeOut(900);
+	   if(id == "badGuys"){badGuysPos[0] = roadPos[0] +  Math.random() * roadSize[0];badGuysPos[1] = roadPos[1] +  Math.random() * roadSize[1];}
+	   else if(id == "badGuys1") {badGuys1Pos[0] = roadPos[0] +  Math.random() * roadSize[0]; badGuys1Pos[1] = roadPos[1] +  Math.random() * roadSize[1];}
+	   else{ badGuys2Pos[0] = roadPos[0] +  Math.random() * roadSize[0]; badGuys2Pos[1] = roadPos[1] +  Math.random() * roadSize[1]; }
+	$(this).fadeIn(200);
+	killCount(1);}
+	//if goodguy has been shot
+	else if($(this).attr("class") == "good") {
+	   $(this).html('<span style = "color:red">Ahhh! You killed Me!!</span>');
+	   $(this).fadeOut(2000);
+	    lostLife(1);
+	   $('#launcher').html('<span style = "color:green"><b>Sorry!<b></span>');
+	   $('#launcher').fadeIn(400);
+	   
+	}
+ }
+	
+	
+		// Capture keypress event
+	function handleKeypress(evt) {
+	   // cross-browser code to get key that was pressed
+	   // The keycode is the ASCII for the key that was pressed
+	   var key = (evt) ? evt.which : event.keyCode;
+	   if (key == 97) {  // 106 is 'j'
+	     moveLauncherLeft();
+	   }
+	   else if (key == 100) { // 108 is 'l'
+	     moveLauncherRight();
+	   }	     
+	}
+	
+	//to use for the arrow key
+    $(document).keydown(function(e) {
+    switch(e.which) {
+        case 37: // left
+		moveLauncherLeft();
+        break;
+
+        case 39: // right
+		moveLauncherRight();
+        break;
+    }});
+	//lab functions
+	function moveLauncherLeft() {
+	  launcherPos[0] -= 8;
+	  redrawLauncher();
+	}
+
+	function moveLauncherRight() {
+	  launcherPos[0] += 8;
+	  redrawLauncher();
+	}
+
+	function redrawLauncher() {
+	  $('#launcher').offset({ left: launcherPos[0], top: launcherPos[1] });	
+        }
+
+        // Do necessary setup on first load
+        function init() {
+	  // Save the main container's rendered position on the window.
+	  var offset = $('#road').offset();
+	  roadPos[0] = offset.left;
+	  roadPos[1] = offset.top;
+
+          // Call main loop every 25 milliseconds
+          setInterval("mainLoop()", 25);
+
+         
+
+          // On every key press...
+	  $(document).keypress(handleKeypress);
+
+	  // Create the blocks
+	  createDiv(badGuysPos, badGuysSize, "bad", "badGuys");
+	  createDiv(badGuys1Pos, badGuysSize, "bad", "badGuys1");
+	  createDiv(badGuys2Pos, badGuysSize, "bad", "badGuys2");
+	  createDiv(goodGuysPos, goodGuysSize, "good", "goodGuys");
+	  
+	
+	  // Create the missile launcher
+	  createDiv(launcherPos, launcherSize, "launcher", "launcher");	    
+
+	  // missile initially invisible
+	  createDiv (missilePos, missileSize,  "visible", 'missile1');
+        }
+
+	// Check for a missile hit.  If hit, act like block destroyed, get rid of missile
+	function checkMissileHit(missileId, missilePos, missileSize, launcherPos, launcherSize) {
+	  if (!didSpheresHit(missilePos, missileSize, launcherPos, launcherSize)) {
+	    return;
+	  }
+
+	  // we did have a hit.  Make the missile invisible and immobile
+	  
+	  //$('#'+missileId).hide();
+	  missileVeloc = null;	  
+	  missilePos   = offBoardPos;
+	  $('#'+missileId).offset({ left: missilePos[0], top: missilePos[1] });
+	  lostLife(1);	  
+
+
+        }
+		
+		
+	//check if bad guys and good guys are collided	
+    function checkCollsion(pos1, size1, pos2, size2) {
+	  if (!didSpheresHit(pos1, size1, pos2, size2)) {
+	    return;
+	  }
+	$('#goodGuys').hide();
+	goodGuysVeloc = null;
+	goodGuysPos   = offBoardPos;
+	
+	
+	}
+    
+	//if a lifa acquired
+	function gotLife(val) {
+	  score = score + val;
+	  $('#scorebox').text("Life Remaining: "+score);
+	}
+	//lost life
+	function lostLife(val) {
+	  score = score - val;
+	  $('#scorebox').text("Life Remaining: "+score);
+	}
+	//keep count how many you killed
+	function killCount(val) {
+	  count = count + val;
+	  $('#killcount').text("Kill Count: "+count);
+	}
+
+	// Check if the spheres with given pos and sizes are touching.  
+	// Assumes width equal to height
+	function didSpheresHit(pos1, size1, pos2, size2) {
+  	  // We have positions of top left corners.  Convert to get center positions
+	  var cx1 = pos1[0] + size1[0] / 2;
+	  var cx2 = pos2[0] + size2[0] / 2;
+	  var cy1 = pos1[1] + size1[1] / 2;
+	  var cy2 = pos2[1] + size2[1] / 2;
+
+	  // find distance between centers
+	  var dx = cx1 - cx2;
+	  var dy = cy1 - cy2;
+	  dist = Math.sqrt(dx*dx + dy*dy);
+
+	  // size tracks the width, so radius would be half of that.
+	  // So they touch if dist less than (widhth1 + width2) / 2
+	  if (dist < ( (size1[0]  + size2[0] ) / 2) ) {
+	    return true; 
+	  }
+	  return false;
+	}
+
+	// Create a div with the given pos, size, and class
+	function createDiv(pos, size, myclass, myid) {
+	   // create basic div
+           var newobj = $("<div id='" + myid + "'> </div>");
+		   newobj.click(gotShotAt);
+	   $('#road').append(newobj);
+	   newobj.addClass(myclass).css("width",size[0]+"px").css("height",size[1]+"px");
+
+	   // move it to right place
+	   newobj.offset({ left: pos[0], top: pos[1] });
+	}
+
+        // When we click, fire a missle at that location
+        function fireAtClick(pos) {            
+	    // calculate slope toward that spot
+	    var dx = launcherPos[0]  -  pos[0];
+	    var dy = launcherPos[1] - pos[1];
+	    
+	    // scale down by the overall distance.  not necc. the right math, but 
+	    // gets it moving in the right direction
+	    var dist = Math.sqrt(dx*dx + dy*dy);
+	    dx = 3 * dx / dist;
+	    dy = 3 * dy / dist;
+
+	    // Make coordinates for the missile
+	    missileVeloc = [ dx , dy ];  
+	    missilePos   = [ pos[0], pos[1] ]; // make sure get COPY of that array, not same one
+
+	    // Missile already created, but maybe invisible - this will make it visible.
+	    $('#missile1').addClass("missile"); 
+	    $('#missile1').removeClass("invisible"); 
+	}
+
+        // Checks to see if the block has hit the edge of the road.  If so, make it bounce off
+        // If we get outside the box, this will also force us to move back in.
+        function keepItemInsideBox(name, boxPos, boxSize, itemPos, itemSize, itemVeloc)  {
+
+            // Check to see if we hit a vertical edge 
+            var edgeHit = calcVerticalEdgeHit(boxPos, boxSize, itemPos, itemSize);            
+            if ( (edgeHit == HIT_LEFT) && (itemVeloc[0] < 0) && (name == "goodGuys" || "goodGuys1") ) {
+                // if too far left, make sure we go right
+                itemVeloc[0] *= -1;
+				goodGuysPos[1] = roadPos[1] +  Math.random() * roadSize[1];
+				
+            }
+			if ( (edgeHit == HIT_LEFT) && (itemVeloc[0] < 0) && (name == "badGuys" || "badGuys1" || "badGuys2") ) {
+                // if too far left, make sure we go right
+                itemVeloc[0] *= -1;
+				badGuysPos[1] = roadPos[1] +  Math.random() * roadSize[1];
+				badGuys1Pos[1] = roadPos[1] +  Math.random() * roadSize[1];
+				
+				badGuys2Pos[1] = roadPos[1] +  Math.random() * roadSize[1];
+            }
+			
+            if ( (edgeHit == HIT_RIGHT) && (itemVeloc[0] > 0) && (name == "goodGuys" || "goodGuys1") ) {
+                // if too far right, make sure we go left
+                itemVeloc[0] = - (Math.floor((Math.random() * 1) + 1));
+				goodGuysPos[1] = roadPos[1] +  Math.random() * roadSize[1];
+				
+				}
+		    if ((edgeHit == HIT_RIGHT) && (itemVeloc[0] > 0) && (name == "badGuys" || "badGuys1" || "badGuys2") ){
+				itemVeloc[0] = - (Math.floor((Math.random() * 3) + 1));
+				badGuysPos[1] = roadPos[1] +  Math.random() * roadSize[1];
+				badGuys1Pos[1] = roadPos[1] +  Math.random() * roadSize[1];
+				badGuys2Pos[1] = roadPos[1] +  Math.random() * roadSize[1];
+				 
+				
+				}
+            
+            
+			
+           
+            
+        }
+        
+        // See if the item hit a vertical edge by going too far left or right.
+        // NOTE: we assume it was basically inside the box to begin with
+        function calcVerticalEdgeHit(boxPos, boxSize, itemPos, itemSize) {
+            // check for hit on left side
+            var boxLeft   = boxPos[0];
+            var boxRight  = boxPos[0] + boxSize[0];
+            var itemLeft  = itemPos[0];
+            var itemRight = itemPos[0] + itemSize[0];
+            
+            if (itemLeft < boxLeft) 
+                return HIT_LEFT;
+            else if (itemRight > boxRight)
+                return HIT_RIGHT;
+        }
+        //top: 1400px; left: 600px;
+       
+
+	// When the document loads, startup the code!
+	$(document).ready(init);
+
+  </script>
+</head>
+
+<body>
+
+  <h1> Save Gotham City !</h1>
+
+  <div id="outter"><div id="scorebox">Life Remaining: 5</div><div id="killcount">Kill Count: 0</div><div id="time">Time: </div></div>
+
+  <div id="road">
+  
+  
+  </div>
+
+  <p><p ><br/>Use 'a' or Left Arrow  &lt;  to move left, 'd' or right Arrow  &gt;  to move right..</p>
+  <button onclick = "stopTimer()" >STOP</button>
+
+  <!-- ***************************************************************
+       Below this point is text you should include on every page
+       *************************************************************** -->
+  
+  <p><br/><br/> </p>
+  <hr/>
+  <p>
+   	<script type = "text/javascript">
+	 document.write('<a href="http://intranet.cs.usna.edu:8888/?doc='+document.location+'">' +
+        '<img src="http://www.w3.org/html/logo/img/mark-word-icon.png"'+
+		'alt="Valid HTML 5!" height="50" width="50" />'+
+      '</a>');
+	</script>  
+    This page last modified 
+    <script type="text/javascript">
+      document.write(document.lastModified);
+    </script>
+  </p>
+  
+  
+  
+</body>
+</html>

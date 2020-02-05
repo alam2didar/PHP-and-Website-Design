@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="lab7.xsl" ?>
+<!-- Generation started @ 2015-04-08 02:58:55 +0000 -->
+
+<league xmlns="http://feed.elasticstats.com/schema/baseball/v5/schedule.xsd" id="2fa448bc-fc17-4d3d-be03-e60e080fdc26" name="Major League Baseball" alias="MLB">
+  <daily-schedule date="2015-04-07">
+    <games>
+      <game id="791759c7-089b-4c67-b3b9-246888ae06e2" status="closed" coverage="full" attendance="13906" game_number="1" day_night="N" scheduled="2015-04-07T23:10:00+00:00" home_team="bdc11650-6f74-49c4-875e-778aeb7632d9" away_team="75729d34-bca7-4a0f-b3df-6f26c6ad3719">
+        <venue id="3aaaf4af-0f8c-49c1-8bf1-1780bb5a5f5c" name="Tropicana Field" market="Tampa Bay" capacity="31042" surface="turf" address="One Tropicana Drive" city="St. Petersburg" state="FL" zip="33705" country="USA"/>
+        <home name="Rays" market="Tampa Bay" abbr="TB" id="bdc11650-6f74-49c4-875e-778aeb7632d9"/>
+        <away name="Orioles" market="Baltimore" abbr="BAL" id="75729d34-bca7-4a0f-b3df-6f26c6ad3719"/>
+        <broadcast network="Sun Sports"/>
+      </game>
+      <game id="374463e9-5580-4708-a92e-a040b8e55135" status="postponed" coverage="full" game_number="1" day_night="N" scheduled="2015-04-08T00:05:00+00:00" home_team="55714da8-fcaf-4574-8443-59bfb511a524" away_team="44671792-dc02-4fdd-a5ad-f5f17edaa9d7">
+        <venue id="53f8eb0d-a361-4a7a-930b-2f8735ea0698" name="Wrigley Field" market="Chicago" capacity="41072" surface="grass" address="1060 West Addison Street" city="Chicago" state="IL" zip="60613" country="USA"/>
+        <home name="Cubs" market="Chicago" abbr="CHC" id="55714da8-fcaf-4574-8443-59bfb511a524"/>
+        <away name="Cardinals" market="St. Louis" abbr="STL" id="44671792-dc02-4fdd-a5ad-f5f17edaa9d7"/>
+        <broadcast network="WGN"/>
+      </game>
+      <game id="d7ccf16a-8eec-4dbf-87dc-22c6069f3e2a" status="inprogress" coverage="full" game_number="1" day_night="N" scheduled="2015-04-08T00:10:00+00:00" home_team="dcfd5266-00ce-442c-bc09-264cd20cf455" away_team="29dd9a87-5bcc-4774-80c3-7f50d985068b">
+        <venue id="3d13c8a7-283f-482b-ade1-441e25b6465d" name="Miller Park" market="Milwaukee" capacity="41900" surface="grass" address="One Brewers Way" city="Milwaukee" state="WI" zip="53214" country="USA"/>
+        <home name="Brewers" market="Milwaukee" abbr="MIL" id="dcfd5266-00ce-442c-bc09-264cd20cf455"/>
+        <away name="Rockies" market="Colorado" abbr="COL" id="29dd9a87-5bcc-4774-80c3-7f50d985068b"/>
+        <broadcast network="FSWI"/>
+      </game>
+      <game id="e412ca27-6fbf-414e-ad3a-8e03d9794463" status="closed" coverage="full" attendance="17483" game_number="1" day_night="N" scheduled="2015-04-07T23:10:00+00:00" home_team="03556285-bdbb-4576-a06d-42f71f46ddc5" away_team="12079497-e414-450a-8bf2-29f91de646bf">
+        <venue id="d5a66fb3-ff26-4f36-910c-3df5cedb36b3" name="Marlins Park" market="Miami" capacity="36742" surface="grass" address="501 Marlins Way" city="Miami" state="FL" zip="33125" country="USA"/>
+        <home name="Marlins" market="Miami" abbr="MIA" id="03556285-bdbb-4576-a06d-42f71f46ddc5"/>
+        <away name="Braves" market="Atlanta" abbr="ATL" id="12079497-e414-450a-8bf2-29f91de646bf"/>
+        <broadcast network="FS-F"/>
+      </game>
+      <game id="5fbea7a9-a772-464e-bdea-5659d269e691" status="inprogress" coverage="full" game_number="1" day_night="N" scheduled="2015-04-08T02:10:00+00:00" home_team="43a39081-52b4-4f93-ad29-da7f329ea960" away_team="4f735188-37c8-473d-ae32-1f7e34ccf892">
+        <venue id="f1c03dac-3c0f-437c-a325-8d5702cd321a" name="Safeco Field" market="Seattle" capacity="47476" surface="grass" address="1516 First Avenue South" city="Seattle" state="WA" zip="98134" country="USA"/>
+        <home name="Mariners" market="Seattle" abbr="SEA" id="43a39081-52b4-4f93-ad29-da7f329ea960"/>
+        <away name="Angels" market="Los Angeles" abbr="LAA" id="4f735188-37c8-473d-ae32-1f7e34ccf892"/>
+        <broadcast network="ROOT SPORTS"/>
+      </game>
+      <game id="0e6146fb-62bd-4cd3-b8d6-24882d0ccfea" status="inprogress" coverage="full" game_number="1" day_night="N" scheduled="2015-04-08T02:05:00+00:00" home_team="27a59d3b-ff7c-48ea-b016-4798f560f5e1" away_team="d99f919b-1534-4516-8e8a-9cd106c6d8cd">
+        <venue id="48cbd35a-d932-4a75-beab-067bfbacfc26" name="O.co Coliseum" market="Oakland" capacity="37090" surface="grass" address="7000 Coliseum Way" city="Oakland" state="CA" zip="94621" country="USA"/>
+        <home name="Athletics" market="Oakland" abbr="OAK" id="27a59d3b-ff7c-48ea-b016-4798f560f5e1"/>
+        <away name="Rangers" market="Texas" abbr="TEX" id="d99f919b-1534-4516-8e8a-9cd106c6d8cd"/>
+        <broadcast network="CSNCA"/>
+      </game>
+      <game id="e43a18a3-c0c7-44fb-a953-0d8cde1613e4" status="inprogress" coverage="full" game_number="1" day_night="N" scheduled="2015-04-08T01:40:00+00:00" home_team="25507be1-6a68-4267-bd82-e097d94b359b" away_team="a7723160-10b7-4277-a309-d8dd95a8ae65">
+        <venue id="bf05de0d-7ced-4a19-8e17-2bbd985f8a92" name="Chase Field" market="Arizona" capacity="48633" surface="grass" address="401 East Jefferson Street" city="Phoenix" state="AZ" zip="85004" country="USA"/>
+        <home name="Diamondbacks" market="Arizona" abbr="ARI" id="25507be1-6a68-4267-bd82-e097d94b359b"/>
+        <away name="Giants" market="San Francisco" abbr="SF" id="a7723160-10b7-4277-a309-d8dd95a8ae65"/>
+        <broadcast network="FS-A+"/>
+      </game>
+      <game id="4c2c3e4a-f833-41c2-bdd8-f339652e4428" status="inprogress" coverage="full" game_number="1" day_night="N" scheduled="2015-04-08T02:10:00+00:00" home_team="ef64da7f-cfaf-4300-87b0-9313386b977c" away_team="d52d5339-cbdd-43f3-9dfa-a42fd588b9a3">
+        <venue id="66a19c3d-24fe-477d-bee7-c6ef1b98352f" name="Dodger Stadium" market="Los Angeles" capacity="56000" surface="grass" address="1000 Elysian Park Avenue" city="Los Angeles" state="CA" zip="90012" country="USA"/>
+        <home name="Dodgers" market="Los Angeles" abbr="LAD" id="ef64da7f-cfaf-4300-87b0-9313386b977c"/>
+        <away name="Padres" market="San Diego" abbr="SD" id="d52d5339-cbdd-43f3-9dfa-a42fd588b9a3"/>
+        <broadcast network="SNLA"/>
+      </game>
+    </games>
+  </daily-schedule>
+</league>
+<!-- Generation ended @ 2015-04-08 02:58:55 +0000 -->
